@@ -1,5 +1,7 @@
 package entity
 
+import "github.com/google/uuid"
+
 type Product struct {
 	ID    string
 	Name  string
@@ -8,7 +10,7 @@ type Product struct {
 
 func NewProduct(name string, price float64) *Product {
 	return &Product{
-		ID:    "1",
+		ID:    uuid.New().String(),
 		Name:  name,
 		Price: price,
 	}
