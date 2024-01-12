@@ -3,8 +3,8 @@ package main
 import (
 	"database/sql"
 	"encoding/json"
+	"github/LayconJohn/go-api/internal/infra/akafka"
 	"github/LayconJohn/go-api/internal/infra/repository"
-	"github/LayconJohn/go-api/internal/infra/repository/akafka"
 	"github/LayconJohn/go-api/internal/usecase"
 
 	"github.com/confluentinc/confluent-kafka-go/kafka"
@@ -26,5 +26,9 @@ func main() {
 	for msg := range msgChan {
 		dto := usecase.CreateProductInputDto{}
 		err := json.Unmarshal(msg.Value, &dto)
+		if err != nil {
+			continue
+		}
+		_, err = createProductUsecase.Execute(dto)
 	}
 }
