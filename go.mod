@@ -2,4 +2,7 @@ module github/LayconJohn/go-api
 
 go 1.21.5
 
-require github.com/google/uuid v1.5.0
+require (
+	github.com/confluentinc/confluent-kafka-go/v2 v2.3.0
+	github.com/google/uuid v1.5.0
+)
